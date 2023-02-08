@@ -19,7 +19,7 @@ function DisplayScreen({questionChanger, question, answer, setTotal, total, chan
         <div class="flex flex-col justify-center items-center">
             <p style={{color: "white"}} class="mb-4">{question}</p>
             <form onSubmit={submit}>
-            <input type="text" id="thing" placeholder="Answer" style={{width: "5em"}}></input>
+            <input type="text" id="thing" placeholder="Answer" style={{width: "5em"}} autoComplete="off"></input>
             </form>
         </div>
     )
