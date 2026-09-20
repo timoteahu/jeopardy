@@ -36,7 +36,8 @@ ROUND_MAP = {"1": "J", "2": "DJ", "3": "FJ"}
 
 
 def season_from_filename(path: str) -> int | None:
-    m = re.search(r"season(\d+)", os.path.basename(path))
+    stem = os.path.splitext(os.path.basename(path))[0]
+    m = re.fullmatch(r"season(\d+)", stem)
     return int(m.group(1)) if m else None
 
 
