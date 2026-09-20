@@ -21,6 +21,8 @@ Idempotent: games are keyed by air_date; each game's clues are deleted and
 reinserted on every run, so re-running refreshes instead of duplicating.
 """
 
+from __future__ import annotations
+
 import argparse
 import csv
 import os
