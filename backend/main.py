@@ -42,3 +42,21 @@ def list_nodes(skip: int = 0, limit: int = 50, db: Session = Depends(get_db)):
 @app.get("/edges")
 def list_edges(skip: int = 0, limit: int = 50, db: Session = Depends(get_db)):
     return db.query(Edge).offset(skip).limit(limit).all()
+
+
+@app.get("/graph")
+def get_graph(db: Session = Depends(get_db)):
+    nodes = [
+        {"id": n.id, "name": n.name, "type": n.type}
+        for n in db.query(Node).all()
+    ]
+    edges = [
+        {
+            "id": e.id,
+            "source": e.source_node_id,
+            "target": e.target_node_id,
+            "type": e.edge_type,
+        }
+        for e in db.query(Edge).all()
+    ]
+    return {"nodes": nodes, "edges": edges}

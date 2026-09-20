@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Graph from './Graph'
 
 type Clue = {
   id: number
@@ -56,6 +57,11 @@ function App() {
             ))}
           </div>
         )}
+      </section>
+
+      <section className="mt-10">
+        <h2 className="text-xl font-semibold mb-4">knowledge graph</h2>
+        <Graph />
       </section>
     </div>
   )
