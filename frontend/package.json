@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.116.0",
     "@types/cytoscape": "^3.31.0",
     "cytoscape": "^3.34.3",
     "cytoscape-cose-bilkent": "^4.1.0",

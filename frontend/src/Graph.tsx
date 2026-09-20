@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import cytoscape from 'cytoscape'
 import cose from 'cytoscape-cose-bilkent'
+import { supabase } from './supabase'
 
 cytoscape.use(cose as any)
 
@@ -21,9 +22,14 @@ export default function Graph() {
   const [data, setData] = useState<GraphData | null>(null)
 
   useEffect(() => {
-    fetch('/api/graph')
-      .then((r) => r.json())
-      .then(setData)
+    Promise.all([
+      supabase.from('nodes').select('id, name, type'),
+      supabase
+        .from('edges')
+        .select('id, source:source_node_id, target:target_node_id, type:edge_type'),
+    ]).then(([{ data: nodes }, { data: edges }]) =>
+      setData({ nodes: nodes ?? [], edges: edges ?? [] }),
+    )
   }, [])
 
   useEffect(() => {
