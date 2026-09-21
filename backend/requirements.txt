@@ -1,3 +1,8 @@
 sqlalchemy==2.0.30
 psycopg2-binary==2.9.9
 python-dotenv==1.0.1
+# build_graph.py (knowledge-graph pipeline)
+sentence-transformers==6.1.0
+scikit-learn==1.7.2
+requests==2.34.2
+numpy==2.2.6
